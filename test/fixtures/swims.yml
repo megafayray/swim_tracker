@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  swim_type: MyString
+  cost: 9.99
+
+two:
+  swim_type: MyString
+  cost: 9.99

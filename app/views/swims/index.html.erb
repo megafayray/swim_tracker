@@ -1,0 +1,75 @@
+<%# app/views/swims/index.html.erb %>
+<%require "action_view/helpers/number_helper" %>
+<% extend ActionView::Helpers::NumberHelper %>
+
+<div class="container">
+  <div class="hero">
+    <%= image_tag("pool.jpg", alt: "Swimmer", class: "hero-image") %>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-title">
+      <h1>Is it worth it? Let me work it!</h1>
+    </div>
+
+    <div class="hero-subtitle">
+      <h2>aka My Swim Pass Utilization Tracker</h2>
+    </div>
+  </div>
+
+
+<hr>
+
+<h2>Log a Swim</h2>
+
+<%= form_with url: swims_path, method: :post, local: true, html: { style: "display: flex; gap: 10px; align-items: center; flex-wrap: wrap;" } do %>
+  <%= label_tag :swim_type, "Type" %>
+  <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>
+
+  <%= label_tag :date, "Date" %>
+  <%= date_field_tag :date, Date.today %>
+
+  <%= submit_tag "Log", style: "padding: 5px 10px;" %>
+<% end %>
+
+<hr>
+
+<h2>Season Info</h2>
+<p>Season End: <%= @season_end.strftime("%B %d, %Y") %></p>
+<p>Days Remaining: <%= @days_remaining %></p>
+
+<h3># of swims completed this season:</h3>
+<p>Lane Swims: <%= @lane_count %></p>
+<p>Open Swims: <%= @open_count %></p>
+
+<hr>
+
+
+<h3>To break even, you need:</h3>
+<ul>
+  <li><%= @remaining_lane %> more Lane Swims</li>
+  <li><%= @remaining_open %> more Open Swims</li>
+</ul>
+
+<hr>
+
+<h2>Swim History</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @swims.order(date: :desc).each do |swim| %>
+      <tr>
+        <td><%= swim.date.strftime("%B %d, %Y") %></td>
+        <td><%= swim.swim_type.capitalize %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+

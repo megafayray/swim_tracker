@@ -1,0 +1,2 @@
+class Swim < ApplicationRecord
+end
