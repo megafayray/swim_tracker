@@ -15,7 +15,7 @@
     <% end %>
   </div>
 
-  <h1 class="header_title">Lion's Pool Swim Pass</h1>
+  <h1 class="header_title">Lion's Pool Season Pass</h1>
 
   
   <div class= "log">
@@ -26,7 +26,7 @@
 
     <p>
       <%= form_with url: swims_path, method: :post, local: true do %>
-        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-family: 'Quicksand', sans-serif";>
           <%= label_tag :swim_type, "Type" %>
           <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>
 
