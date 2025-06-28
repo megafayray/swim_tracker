@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root "swims#index"
+  root "home#index"
+  # get "home/index"
+  # root "swims#index"
   resources :swims, only: [:index, :create]
   
   # get "swims/index"

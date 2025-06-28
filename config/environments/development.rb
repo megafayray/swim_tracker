@@ -25,6 +25,11 @@ Rails.application.configure do
     config.action_controller.perform_caching = false
   end
 
+  # config/environments/development.rb
+  config.assets.compile = true    # should be true in dev
+  config.assets.digest = true     # this can stay true
+
+
   # Change to :null_store to avoid any caching.
   config.cache_store = :memory_store
 
