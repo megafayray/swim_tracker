@@ -25,14 +25,17 @@
     </div>
 
     <p>
-      <%= form_with url: swims_path, method: :post, local: true, html: { style: "display: flex; gap: 10px; align-items: center; flex-wrap: wrap;" } do %>
-        <%= label_tag :swim_type, "Type" %>
-        <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>
+      <%= form_with url: swims_path, method: :post, local: true do %>
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <%= label_tag :swim_type, "Type" %>
+          <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>
 
-        <%= label_tag :date, "Date" %>
-        <%= date_field_tag :date, Date.today %>
-
-        <%= submit_tag "Log", class: "btn" %>
+          <%= label_tag :date, "Date" %>
+          <%= date_field_tag :date, Date.today %>
+        </div>
+        <p>
+          <%= submit_tag "Log", class: "btn", style: "padding:0.5em;"%>
+        </p>
       <% end %>
     </p>
   </div>
