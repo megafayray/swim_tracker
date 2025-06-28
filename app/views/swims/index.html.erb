@@ -10,7 +10,7 @@
 
 <div class="container" id="display", style="background-image: url('<%= asset_path('andrew.jpg') %>'">
   <div style="padding: 0px; background-color: rgb(52, 52, 52, 0);">
-    <%= link_to root_path do %>
+    <%= link_to memberships_path do %>
     <%= image_tag("arrow-left-thin-circle-outline.png", alt: "Home", id: "clickable-image", style:"width: 40px; height: auto; padding: 0px;") %>
     <% end %>
   </div>
@@ -24,15 +24,17 @@
       <h2 style="margin: 0;">Log a Swim</h2>
     </div>
 
-    <%= form_with url: swims_path, method: :post, local: true, html: { style: "display: flex; gap: 10px; align-items: center; flex-wrap: wrap;" } do %>
-      <%= label_tag :swim_type, "Type" %>
-      <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>
+    <p>
+      <%= form_with url: swims_path, method: :post, local: true, html: { style: "display: flex; gap: 10px; align-items: center; flex-wrap: wrap;" } do %>
+        <%= label_tag :swim_type, "Type" %>
+        <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>
 
-      <%= label_tag :date, "Date" %>
-      <%= date_field_tag :date, Date.today %>
+        <%= label_tag :date, "Date" %>
+        <%= date_field_tag :date, Date.today %>
 
-      <%= submit_tag "Log", class: "btn" %>
-    <% end %>
+        <%= submit_tag "Log", class: "btn" %>
+      <% end %>
+    </p>
   </div>
 
   <div class = "season">
@@ -47,7 +49,7 @@
   <div class="completed">
     <div style="display: flex; align-items: center; gap: 10px;">
       <%= image_tag 'check-decagram-outline.png', alt: 'Checkmark', style: 'height: 30px;' %>
-      <h2 style="margin:0";>Swims completed this season</h2>
+      <h2 style="margin:0";>Swims completed</h2>
     </div>
       <p>Lane Swims: <%= @lane_count %></p>
       <p>Open Swims: <%= @open_count %></p>

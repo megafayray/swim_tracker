@@ -1,0 +1,39 @@
+<style>
+  h2 {
+  background: linear-gradient(to right, var(--primary_colour), var(--secondary_colour));
+  -webkit-background-clip: text;   /* For Safari and Chrome */
+  background-clip: text;           /* Standard */
+  -webkit-text-fill-color: transparent;  /* For Safari and Chrome */
+  color: transparent;              /* For other browsers */
+}
+</style>
+
+<div class="container" id="display", style="height: 100vh; background-image: url('<%= asset_path('andrew.jpg') %>'">
+  <div style="padding: 0px; background-color: rgb(52, 52, 52, 0);">
+    <%= link_to root_path do %>
+    <%= image_tag("arrow-left-thin-circle-outline.png", alt: "Home", id: "clickable-image", style:"width: 40px; height: auto; padding: 0px;") %>
+    <% end %>
+  </div>
+
+  <h1 class="header_title">Active Memberships</h1>
+
+    <%= link_to swims_path, style: "text-decoration: none; color: inherit;" do %>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <%= image_tag 'swim.png', alt: 'Swim icon', style: 'height: 30px;' %>
+                <h2 style="margin: 0;">Lion's Pool Season Pass</h2>
+            </div>
+    <% end %>
+
+    <%= link_to swims_path, style: "text-decoration: none; color: inherit;" do %>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <%= image_tag 'pine-tree.png', alt: 'Tree icon', style: 'height: 30px;' %>
+            <h2 style="margin: 0;">Wildwood Conservation Area</h2>
+        </div>
+    <% end %>
+
+      <div style="padding: 0px; background-color: rgb(52, 52, 52, 0);">
+        <%= link_to root_path do %>
+        <%= image_tag("plus-circle-outline.png", alt: "Plus icon", id: "clickable-image", style:"float: right; width: 40px; height: auto; padding: 0px;") %>
+    <% end %>
+  </div>
+</div>

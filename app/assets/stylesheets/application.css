@@ -120,7 +120,7 @@ opacity: 0.9;
   flex-direction: column;
   gap: 30px;
   padding: 20px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 #display > * {
@@ -130,4 +130,13 @@ opacity: 0.9;
   border-radius: 25px;
   width: 100%;
   box-sizing: border-box; /* important to include padding in width */
+}
+
+#swim_type {
+  font-family: "Fredoka", sans-serif;
+
+}
+
+#date {
+  font-family: "Fredoka", sans-serif;
 }

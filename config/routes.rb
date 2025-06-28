@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  # get "memberships/index"
+  # get "memberships/create"
   root "home#index"
   # get "home/index"
   # root "swims#index"
   resources :swims, only: [:index, :create]
+  resources :memberships, only: [:index, :create]
   
   # get "swims/index"
   # get "swims/create"
