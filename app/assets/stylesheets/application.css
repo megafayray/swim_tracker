@@ -64,9 +64,10 @@ display: inline-block;
 text-align: center;
 margin-bottom: 0px;
 margin-top: 0px;
+font-family: "Fredoka", sans-serif;
 }
 
-.comeon {
+.letsgo {
   display: inline-block;
   text-align: center;
   color:var(--main_text);
@@ -161,9 +162,15 @@ table th {
   /* justify-content: space-between; */
 }
 
-#display > * {
-  /* background-color: #343434; */
+#display > *:not(.flash):not(.letsgo){
   background-color: rgb(52, 52, 52, 0.7);
+  /* padding: 20px; 
+  border-radius: 25px;
+  width: 100%;
+  box-sizing: border-box; important to include padding in width */
+}
+
+#display > *:not(.flash.notice) {
   padding: 20px; 
   border-radius: 25px;
   width: 100%;
@@ -177,4 +184,38 @@ table th {
 
 #date {
   font-family: "Quicksand", sans-serif;
+}
+
+/* .flash {
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-family: "Quicksand", sans-serif;
+} */
+
+.flash {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10; /* higher than your content */
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-family: "Quicksand", sans-serif;
+  width: fit-content;
+  max-width: 90%;
+  text-align: center;
+  pointer-events: none; /* ensures it doesn't block clicks below */
+}
+
+.flash.notice {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.flash.alert {
+  background-color: #f8d7da;
+  color: #721c24;
 }

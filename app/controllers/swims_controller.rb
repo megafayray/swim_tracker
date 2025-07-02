@@ -22,6 +22,7 @@ class SwimsController < ApplicationController
     date = params[:date].present? ? Date.parse(params[:date]) : Date.today
   
     Swim.create(swim_type: swim_type, cost: cost, date: date)
+    flash[:notice] = "Swim logged successfully."
     redirect_to root_path
   end  
 
