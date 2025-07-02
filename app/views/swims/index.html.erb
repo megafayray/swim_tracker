@@ -85,8 +85,10 @@
           <% @swims.order(date: :desc).each do |swim| %>
             <tr>
               <td><%= swim.date.strftime("%B %d, %Y") %></td>
-              <td><%= swim.swim_type.capitalize %></td>
-              <td>Edit Delete</td>
+              <td><%= swim.swim_type.capitalize|| "Unknown"  %></td>
+              <td>
+               <%= button_to "Delete", swim_path(swim), method: :delete, data: { confirm: "Are you sure you want to delete this swim?" }, class: "btn", form: { style: "display: inline;" } %>
+              </td>
             </tr>
           <% end %>
         </tbody>

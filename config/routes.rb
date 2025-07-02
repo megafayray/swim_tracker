@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "home#index"
   # get "home/index"
   # root "swims#index"
-  resources :swims, only: [:index, :create]
+  resources :swims, only: [:index, :create, :destroy]
   resources :memberships, only: [:index, :create]
   
   # get "swims/index"
