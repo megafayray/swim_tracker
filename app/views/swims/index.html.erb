@@ -66,4 +66,30 @@
       <p><strong><%= @remaining_lane %> </strong>more Lane Swims or</p>
       <p><strong><%= @remaining_open %></strong> more Open Swims </p>
   </div>
+
+  <div class="history">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <%= image_tag 'history.png', alt: 'Clock with arrow history circle', style: 'height: 30px;' %>
+      <h2 style="margin: 0;">History</h2>
+    </div>
+    <p>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Modify</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @swims.order(date: :desc).each do |swim| %>
+            <tr>
+              <td><%= swim.date.strftime("%B %d, %Y") %></td>
+              <td><%= swim.swim_type.capitalize %></td>
+              <td>Edit Delete</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+   </p>
 </div>
