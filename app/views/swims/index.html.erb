@@ -9,6 +9,14 @@
 </style>
 
 <div class="container" id="display", style="background-image: url('<%= asset_path('andrew.jpg') %>'">
+  <% if flash[:notice] %>
+    <div class="flash notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="flash alert"><%= flash[:alert] %></div>
+  <% end %>
+  
   <div style="padding: 0px; background-color: rgb(52, 52, 52, 0);">
     <%= link_to memberships_path do %>
     <%= image_tag("arrow-left-thin-circle-outline.png", alt: "Home", id: "clickable-image", style:"width: 40px; height: auto; padding: 0px;") %>

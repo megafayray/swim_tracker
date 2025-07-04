@@ -23,13 +23,15 @@ class SwimsController < ApplicationController
   
     Swim.create(swim_type: swim_type, cost: cost, date: date)
     flash[:notice] = "Swim logged successfully."
-    redirect_to root_path
+    # redirect_to root_path
+    redirect_to swims_path 
   end  
 
   def destroy
     @swim = Swim.find(params[:id])
     @swim.destroy
     flash[:notice] = "Swim deleted successfully."
-    redirect_to root_path
+    # redirect_to root_path
+    redirect_to swims_path 
   end
 end
