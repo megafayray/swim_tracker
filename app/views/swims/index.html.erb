@@ -52,7 +52,10 @@
       <%= image_tag 'counter.png', alt: 'Counter', style: 'height: 30px;' %>
       <h2 style="margin:0">Season Info</h2>
     </div>
-      <p>Season End: <%= @season_end.strftime("%B %d, %Y") %></p>
+      <p>  
+        <%= @days_remaining == 0 ? "Season Ended" : "Season Ends" %>: 
+        <%= @season_end.strftime("%B %d, %Y") %>
+      </p>
       <p>Days Remaining: <%= @days_remaining %></p>
   </div>
 
