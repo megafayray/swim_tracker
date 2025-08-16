@@ -12,8 +12,15 @@ class SwimsController < ApplicationController
 
     @season_start = Date.new(2025, 6, 13)
     @season_end = Date.new(2025, 8, 31)
+
     @today = Date.today
-    @days_remaining = (@season_end - @today).to_i
+
+    @days_remaining = [(@season_end - @today).to_i, 0].max 
+    #max chooses the highest value to display between the two values in the array
+    #If the first number is a negative value, meaning that today's date is AFTER the season end date
+    #the highest (max) number is 0 and is what will be displayed
+    #This is cleaner than a conditional
+
   end
 
   def create
