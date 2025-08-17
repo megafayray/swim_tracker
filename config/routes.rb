@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root "home#index"
   # get "home/index"
   # root "swims#index"
-  resources :swims, only: [:index, :create, :destroy]
-  resources :memberships, only: [:index, :create]
-  
+  resources :swims, only: [ :index, :create, :destroy ]
+  resources :memberships, only: [ :index, :create ]
+
   # get "swims/index"
   # get "swims/create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
