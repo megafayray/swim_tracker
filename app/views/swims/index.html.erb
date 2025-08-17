@@ -61,7 +61,7 @@
 
   <div class="completed">
     <div style="display: flex; align-items: center; gap: 10px;">
-      <%= image_tag 'check-decagram-outline.png', alt: 'Checkmark', style: 'height: 30px;' %>
+      <%= image_tag 'swim.png', alt: 'Swim icon', style: 'height: 30px;' %>
       <h2 style="margin:0";>Swims completed</h2>
     </div>
       <p>Lane Swims: <%= @lane_count %></p>
@@ -70,7 +70,11 @@
 
   <div class="break_even">
     <div style="display: flex; align-items: center; gap: 10px;">
-       <%= image_tag 'information-slab-circle-outline.png', alt: 'Info circle', style: 'height: 30px;' %>
+      <% if @remaining_lane == 0 || @remaining_open == 0 %>
+        <%= image_tag 'check-decagram-outline.png', alt: 'Checkmark', style: 'height: 30px;' %>
+      <% else %>
+        <%= image_tag 'information-slab-circle-outline.png', alt: 'Info circle', style: 'height: 30px;' %>
+      <% end %>
 
       <% if @bonus_lane > 0 || @bonus_open > 0 %>
         <h2 style="margin: 0;">You broke even and have earned:</h2>
