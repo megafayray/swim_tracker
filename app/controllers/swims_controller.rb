@@ -10,6 +10,8 @@ class SwimsController < ApplicationController
     @remaining_lane = (@remaining / 4.25).ceil
     @remaining_open = (@remaining / 15.00).ceil
 
+    @bonus_lane, @bonus_open = calculate_bonus_swims
+
     @season_start = Date.new(2025, 6, 13)
     @season_end = Date.new(2025, 8, 31)
 
@@ -41,4 +43,23 @@ class SwimsController < ApplicationController
     # redirect_to root_path
     redirect_to swims_path 
   end
+
+  private
+
+  def calculate_bonus_swims
+    total = 0
+    bonus_lane = 0
+    bonus_open = 0
+  
+    Swim.order(:created_at).each do |swim|
+      total += swim.cost
+      if total > 295
+        bonus_lane += 1 if swim.swim_type == "lane"
+        bonus_open += 1 if swim.swim_type == "open"
+      end
+    end
+  
+    [bonus_lane, bonus_open]
+  end
+  
 end

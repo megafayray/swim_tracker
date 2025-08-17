@@ -35,11 +35,10 @@
       <%= form_with url: swims_path, method: :post, local: true do %>
         <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-family: 'Quicksand', sans-serif";>
           <%= label_tag :swim_type, "Type" %>
-          <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>       
+          <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>            
 
           <%= label_tag :date, "Date" %>
-          <%= date_field_tag :date, Date.today, max: @season_end %>          
-
+          <%= date_field_tag :date, Date.today, max: @season_end %>     
         </div>
         <p>
           <%= submit_tag "Log", class: "btn", style: "padding:0.5em;"%>
@@ -72,10 +71,29 @@
   <div class="break_even">
     <div style="display: flex; align-items: center; gap: 10px;">
        <%= image_tag 'information-slab-circle-outline.png', alt: 'Info circle', style: 'height: 30px;' %>
-      <h2 style="margin: 0;">To break even, you need</h2>
+
+      <% if @bonus_lane > 0 || @bonus_open > 0 %>
+        <h2 style="margin: 0;">You broke even and have earned:</h2>
+      <% elsif @remaining_lane == 0 || @remaining_open == 0 %>
+        <h2 style="margin: 0;">You broke even! Now all future swims will be free!</h2>
+      <% else %>
+        <h2 style="margin: 0;">To break even, you need:</h2>
+      <% end %>
     </div>
-      <p><strong><%= @remaining_lane %> </strong>more Lane Swims or</p>
-      <p><strong><%= @remaining_open %></strong> more Open Swims </p>
+
+    <% if @bonus_lane > 0 || @bonus_open > 0 %>
+      <% if @bonus_lane > 0 %>
+        <p><strong><%= @bonus_lane %></strong> free Lane Swim<%= 's' if @bonus_lane > 1 %>!</p>
+      <% end %>
+
+      <% if @bonus_open > 0 %>
+        <p><strong><%= @bonus_open %></strong> free Open Swim<%= 's' if @bonus_open > 1 %>!</p>
+      <% end %>
+    <% elsif @remaining_lane > 0 || @remaining_open > 0 %>
+      <p><strong><%= @remaining_lane %></strong> more Lane Swim<%= 's' if @remaining_lane > 1 %> or</p>
+      <p><strong><%= @remaining_open %></strong> more Open Swim<%= 's' if @remaining_open > 1 %></p>
+    <% end %>
+
   </div>
 
   <div class="history">
