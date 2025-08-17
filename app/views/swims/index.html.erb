@@ -35,10 +35,11 @@
       <%= form_with url: swims_path, method: :post, local: true do %>
         <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-family: 'Quicksand', sans-serif";>
           <%= label_tag :swim_type, "Type" %>
-          <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>
+          <%= select_tag :swim_type, options_for_select([["Lane", "lane"], ["Open", "open"]]), autofocus: true %>       
 
           <%= label_tag :date, "Date" %>
-          <%= date_field_tag :date, Date.today %>
+          <%= date_field_tag :date, Date.today, max: @season_end %>          
+
         </div>
         <p>
           <%= submit_tag "Log", class: "btn", style: "padding:0.5em;"%>
